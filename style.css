@@ -1,0 +1,105 @@
+html {
+  font-size: 62.5%;
+}
+
+body {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;  /* 改為縱向排列 */
+  justify-content: center;
+  align-items: center;     /* 垂直和水平方向都居中 */
+  margin: 0;
+  min-height: 100vh;       /* 讓 body 高度至少為 100vh */
+  background-color: black;
+}
+
+.card {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-areas: 
+    "headshot name name"
+    "intro intro intro";
+  background-color: bisque;
+  border-radius: 10%;
+  max-width: 500px;         /* 設置最大寬度 */
+  width: 90%;               /* 設置寬度為 90% */
+  height: auto;             /* 高度根據內容調整 */
+  margin: 1rem;
+}
+
+.headshot img {
+  grid-area: headshot;
+  width: 120px;
+  height: 120px;            /* 設置高度，保持圓形 */
+  object-fit: cover;
+  border: 3px solid red;
+  border-radius: 50%;       /* 使圖片成圓形 */
+  margin: 1rem 0 0 3rem;
+}
+
+.name {
+  grid-area: name;
+  font-size: 3rem;
+  font-family: 'Times New Roman', Times, serif;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding-top: 1rem;
+}
+
+.intro {
+  grid-area: intro;
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 1.2rem;
+  flex-direction: row;
+  justify-content: center;
+  gap: 1rem;
+  padding-left: 3rem;
+  padding-top: 0;
+  margin-top: 1.5rem;
+}
+
+/* 手機螢幕大小時改用 flex */
+@media screen and (max-width: 800px) {
+  .card {
+    display: flex;
+    flex-direction: column;  /* 改為縱向排列 */
+    justify-content: center; /* 垂直置中所有子元素 */
+    align-items: center;     /* 水平置中所有子元素 */
+    background-color: bisque;
+    border-radius: 10%;
+    max-width: 600px;
+    width: 90%;  /* 讓寬度隨著螢幕大小自適應 */
+    height: auto; /* 高度自適應內容 */
+    margin-left: 0;
+    padding-left: 0;
+    text-align: center;      /* 確保文字水平置中 */
+  }
+
+  .headshot img {
+    width: 200px;           /* 小螢幕下縮小圖片 */
+    height: 200px;
+    margin: 0;
+    padding: 0;
+    
+  }
+
+  .name {
+    font-size: 3.5rem;         /* 放大字型 */
+    text-align: center;      /* 確保名字文本居中 */
+    margin: 0;
+    padding: 0;
+  }
+
+  .intro {
+    font-size: 1.5rem;        /* 放大介紹文字大小 */
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;       /* 確保介紹文字居中 */
+    align-items: center;      /* 保持文本垂直居中 */
+    justify-content: center;  /* 保持文本水平居中 */
+    margin: 0;
+    padding: 0;
+  }
+}
